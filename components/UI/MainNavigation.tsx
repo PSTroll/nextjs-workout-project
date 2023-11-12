@@ -20,7 +20,7 @@ const MainNavigation = () => {
   };
 
   return (
-    <header className=" text-black font-bold text-xl flex shadow-md">
+    <header className="text-black font-bold text-xl flex shadow-md">
       <span className="text-3xl cursor-pointer md:hidden block mx-2 flex items-center p-6">
         <Image
           alt="menu"
@@ -31,7 +31,7 @@ const MainNavigation = () => {
         />
       </span>
       <nav
-        className={`md:flex md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 md:ml-6 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-300 bg-white max-md:flex max-md:flex-col ${styles}`}
+        className={`md:flex md:z-30 md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 md:ml-6 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-300 bg-white max-md:flex max-md:flex-col ${styles}`}
       >
         {paths.map((item) => (
           <Link
@@ -41,7 +41,7 @@ const MainNavigation = () => {
               currentPath === `/${item.path}`
                 ? "text-accent bg-gray-100"
                 : "text-black"
-            } cursor-pointer hover:text-gray-500 duration-200 md:my-0 py-5 px-2`}
+            } cursor-pointer hover:text-gray-500 duration-200 md:my-0 py-5 px-2 z-20`}
           >
             {item.title}
           </Link>
