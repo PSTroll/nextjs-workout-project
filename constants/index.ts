@@ -2,7 +2,7 @@ import path from "path";
 
 export const paths = [
   { path: "", title: "Home" },
-  // { path: "blog", title: "Articles" },
+  { path: "blog", title: "Articles" },
   { path: "plans", title: "Workouts Plans" },
   { path: "calculators", title: "Calculator" },
 ];

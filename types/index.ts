@@ -25,3 +25,14 @@ export interface CalculatorCardProps {
 export interface PlanCardProps {
   level: string;
 }
+
+export interface Post {
+  content: string;
+  slug: string;
+  data: {
+    title: string;
+    snippet: string;
+    date: Date;
+    imagesrc: string;
+  };
+}

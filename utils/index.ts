@@ -71,3 +71,33 @@ export const calculateCPM = (bmr: number, activityValue: string) => {
   }
   return Math.floor(bmr * value);
 };
+
+export const getAllPosts = async () => {
+  const res = await fetch(`${process.env.pageUrl}/api/allposts`, {
+    next: {
+      revalidate: 1,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Fetching posts failed!");
+  }
+
+  const posts = await res.json();
+  return posts;
+};
+
+export const getPost = async (slug: string) => {
+  const res = await fetch(`${process.env.pageUrl}/api/post/${slug}`, {
+    next: {
+      revalidate: 1,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Fetching posts failed!");
+  }
+
+  const { postData } = await res.json();
+  return postData;
+};

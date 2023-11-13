@@ -21,3 +21,7 @@ td {
 table {
   border-collapse: collapse;
 }
+
+.markdown > * {
+  all: revert;
+}
