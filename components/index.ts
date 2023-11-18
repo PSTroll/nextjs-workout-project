@@ -9,8 +9,8 @@ import CalculatorsSection from "./HomeSections/CalculatorsSection";
 import Footer from "./UI/Footer";
 import BMICalculator from "./Calculators/BMICalculator";
 import CaloriesDemand from "./Calculators/CaloriesDemand";
-import BlogElement from "./Blog/BlogElement";
-import ArticleDetails from "./Blog/ArticleDetails";
+import PlanCard from "./Plans/PlanCard";
+import PlanForm from "./Plans/PlanForm";
 
 export {
   Header,
@@ -24,6 +24,6 @@ export {
   Footer,
   BMICalculator,
   CaloriesDemand,
-  BlogElement,
-  ArticleDetails,
+  PlanCard,
+  PlanForm,
 };

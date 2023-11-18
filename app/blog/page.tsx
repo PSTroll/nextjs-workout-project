@@ -1,11 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 import { getAllPosts } from "../../utils";
 import { Post } from "@/types";
 
-const Page = async () => {
+const Page = memo(async () => {
   const { allPosts } = await getAllPosts();
   return (
     <main className="w-full overflow-x-hidden flex justify-center items-center bg-dirty-white">
@@ -15,6 +15,7 @@ const Page = async () => {
             key={index}
             href={`/blog/${post.slug}`}
             className="bg-white rounded-xl hover:scale-110 duration-500 ease-in-out shadow-lg"
+            prefetch
           >
             <div>
               <Image
@@ -34,6 +35,6 @@ const Page = async () => {
       </div>
     </main>
   );
-};
+});
 
 export default Page;

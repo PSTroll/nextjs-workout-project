@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { PlanCardProps } from "@/types";
 
-const PlanCard = ({ level }: PlanCardProps) => {
+const PlanCard = memo(({ level }: PlanCardProps) => {
   const [bgColor, setBgColor] = useState("");
   const levelName = level.replace(level[0], level[0].toUpperCase());
   let levelDesc;
@@ -52,9 +52,9 @@ const PlanCard = ({ level }: PlanCardProps) => {
   }, [bgColor]);
 
   return (
-    <Link href={`/plans/${level}`}>
+    <Link href={`/plans/order?level=${level}`}>
       <div
-        className={`${bgColor} rounded-md p-5 m-10 flex flex-col justify-center items-center cursor-pointer hover:-translate-y-10 transition-all duration-300 ease-in-out h-[360px]`}
+        className={`${bgColor} rounded-md p-5 m-3 sm:m-10 flex flex-col justify-center items-center cursor-pointer hover:-translate-y-10 transition-all duration-300 ease-in-out h-[360px]`}
       >
         <div
           className={`max-lg:w-36 max-lg:h-36 w-24 h-24 rounded-full bg-yellow-400 flex justify-center items-center cursor-pointer`}
@@ -75,6 +75,6 @@ const PlanCard = ({ level }: PlanCardProps) => {
       </div>
     </Link>
   );
-};
+});
 
 export default PlanCard;

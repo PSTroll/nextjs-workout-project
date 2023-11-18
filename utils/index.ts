@@ -1,3 +1,5 @@
+import { MongoClient } from "mongodb";
+
 const calculateBMILevel = (bmi: number) => {
   if (bmi < 16) {
     return "Severe Thinnes";
@@ -100,4 +102,78 @@ export const getPost = async (slug: string) => {
 
   const { postData } = await res.json();
   return postData;
+};
+
+export const updateFormParams = (
+  queryParams: any,
+  data: any,
+  level: string
+) => {
+  if (queryParams.has("level")) {
+    queryParams.set("level", level);
+  } else {
+    queryParams.append("level", level);
+  }
+  if (queryParams.has("name")) {
+    queryParams.set("name", data.name);
+  } else {
+    queryParams.append("name", data.name);
+  }
+  if (queryParams.has("lastname")) {
+    queryParams.set("lastname", data.lastname);
+  } else {
+    queryParams.append("lastname", data.lastname);
+  }
+  if (queryParams.has("age")) {
+    queryParams.set("age", data.age);
+  } else {
+    queryParams.append("age", data.age);
+  }
+  if (queryParams.has("email")) {
+    queryParams.set("email", data.email);
+  } else {
+    queryParams.append("email", data.email);
+  }
+  if (queryParams.has("activity")) {
+    queryParams.set("activity", data.activity);
+  } else {
+    queryParams.append("activity", data.activity);
+  }
+  return queryParams;
+};
+
+export const checkFormParams = (
+  queryParams: any,
+  setFormData: (data: any) => {}
+) => {
+  if (queryParams.has("name")) {
+    setFormData((prev: any) => ({
+      ...prev,
+      name: queryParams.get("name"),
+    }));
+  }
+  if (queryParams.has("lastname")) {
+    setFormData((prev: any) => ({
+      ...prev,
+      lastname: queryParams.get("lastname"),
+    }));
+  }
+  if (queryParams.has("age")) {
+    setFormData((prev: any) => ({
+      ...prev,
+      age: queryParams.get("age"),
+    }));
+  }
+  if (queryParams.has("email")) {
+    setFormData((prev: any) => ({
+      ...prev,
+      email: queryParams.get("email"),
+    }));
+  }
+  if (queryParams.has("activity")) {
+    setFormData((prev: any) => ({
+      ...prev,
+      activity: queryParams.get("activity"),
+    }));
+  }
 };

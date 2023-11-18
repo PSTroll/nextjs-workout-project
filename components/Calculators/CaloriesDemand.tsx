@@ -46,7 +46,7 @@ const CaloriesDemand = () => {
   };
 
   return (
-    <div className="bg-white p-5 m-5 mt-0 my-16 rounded-lg shadow-md lg:min-w-[1144px]">
+    <div className="lg:py-10 p-5 bg-white rounded-lg bg-opacity-30 backdrop-blur xl:min-w-[1144px] my-10 m-5">
       <h2 className="text-center font-bold text-xl">
         Calorie Demand Calculator
       </h2>
@@ -54,10 +54,7 @@ const CaloriesDemand = () => {
         The Calorie Demand Calculator can be used to estimate the number of
         calories a person needs to consume each day.
       </p>
-      <form
-        className="my-2 flex flex-col sm:items-center"
-        onSubmit={onSubmitHandler}
-      >
+      <form className="my-2 flex flex-col " onSubmit={onSubmitHandler}>
         <div>
           <div className="flex flex-col my-5">
             <label htmlFor="age" className="font-bold ml-1">
@@ -65,10 +62,10 @@ const CaloriesDemand = () => {
             </label>
             <input
               type="number"
-              placeholder="Enter Your Age"
+              placeholder="Enter your age"
               name="age"
               id="age"
-              className="bg-dirty-white p-1 rounded-md outline-0 w-64"
+              className="bg-dirty-white p-1 rounded-md outline-0 sm:w-64"
               ref={ageRef}
             />
           </div>
@@ -79,7 +76,7 @@ const CaloriesDemand = () => {
             <input
               type="number"
               id="height"
-              className="bg-dirty-white p-1 rounded-md outline-0 w-64"
+              className="bg-dirty-white p-1 rounded-md outline-0 sm:w-64"
               placeholder="Enter your height"
               ref={heightRef}
             />
@@ -91,7 +88,7 @@ const CaloriesDemand = () => {
             <input
               type="number"
               id="weight"
-              className="bg-dirty-white p-1 rounded-md outline-0 w-64"
+              className="bg-dirty-white p-1 rounded-md outline-0 sm:w-64"
               placeholder="Enter your weight"
               ref={weightRef}
             />
@@ -128,7 +125,7 @@ const CaloriesDemand = () => {
             <select
               name="activity"
               id="activity"
-              className="rounded-lg border-[1px] border-solid border-accent p-2"
+              className="rounded-lg border-[1px] border-solid border-accent p-2 w-full"
               ref={activeRef}
               required
             >

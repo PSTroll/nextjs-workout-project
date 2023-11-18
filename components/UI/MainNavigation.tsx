@@ -38,7 +38,8 @@ const MainNavigation = () => {
             key={item.title}
             href={`/${item.path}`}
             className={`${
-              currentPath === `/${item.path}`
+              currentPath === `/${item.path}` ||
+              currentPath.includes(`/${item.path}/`)
                 ? "text-accent bg-gray-100"
                 : "text-black"
             } cursor-pointer hover:text-gray-500 duration-200 md:my-0 py-5 px-2 z-20`}
