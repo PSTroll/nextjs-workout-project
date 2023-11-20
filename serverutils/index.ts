@@ -2,7 +2,8 @@ import { headers } from "next/headers";
 
 export const getAllPosts = async () => {
   const headersList = headers();
-  const res = await fetch(`${headersList.get("host")}/api/allposts`, {
+  headersList.get("");
+  const res = await fetch(`/api/allposts`, {
     next: {
       revalidate: 1,
     },
@@ -19,7 +20,7 @@ export const getAllPosts = async () => {
 
 export const getPost = async (slug: string) => {
   const headersList = await headers();
-  const res = await fetch(`${headersList.get("host")}/api/post/${slug}`, {
+  const res = await fetch(`/api/post/${slug}`, {
     next: {
       revalidate: 1,
     },
