@@ -1,27 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
-import { signal } from "@preact/signals-core";
 import { useSearchParams } from "next/navigation";
 import { memo } from "react";
 
-import { checkFormParams, updateFormParams } from "@/utils";
+import { orderPlan, updateFormParams } from "@/utils";
 
-export const formInformation = signal({
-  name: "",
-  lastname: "",
-  age: "",
-  email: "",
-  activity: "",
-});
-
-type formType = {
-  name: string;
-  lastname: string;
-  age: string;
-  email: string;
-  activity: string;
-};
+import { formType } from "@/types";
 
 const PlanForm = memo((props: { level: string | any }) => {
   const [windowLoc, setWindowLoc] = useState("");
@@ -55,27 +40,11 @@ const PlanForm = memo((props: { level: string | any }) => {
     e.preventDefault();
 
     queryParams = updateFormParams(queryParams, formData, props.level);
-    formInformation.value = formData;
     router.replace(`${window.location.pathname}?${queryParams.toString()}`, {
       scroll: false,
     });
 
-    const res = await fetch(`${process.env.pageUrl}/api/orders`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        level: props.level,
-        name: formData.name,
-        lastname: formData.lastname,
-        mail: formData.email,
-        age: formData.age,
-        activity: formData.activity,
-      }),
-    });
-
-    await res.json();
+    orderPlan(props.level, formData);
   };
 
   return (

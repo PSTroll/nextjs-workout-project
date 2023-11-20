@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 
 export const connectToDatabase = async () => {
-  const uri = process.env.db_key;
+  const uri = process.env.DB_KEY;
   if (uri) {
     const client = new MongoClient(uri);
     const clientPromise = client.connect();

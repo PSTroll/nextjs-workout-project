@@ -15,6 +15,8 @@ const PlanCard = memo(({ level }: PlanCardProps) => {
     levelDesc = (
       <span className="text-white text-sm italic cursor-pointer group-hover:-translate-y-10 transition-all duration-300 ease-in-out">
         Plan for every single muscle, contact with our consultants 24/7
+        <br />
+        10$
       </span>
     );
   }
@@ -23,6 +25,8 @@ const PlanCard = memo(({ level }: PlanCardProps) => {
     levelDesc = (
       <span className="text-white text-sm italic cursor-pointer group-hover:-translate-y-10 transition-all duration-300 ease-in-out">
         Basic Plan benefits and individual programs if you have some disabilites
+        <br />
+        20$
       </span>
     );
   }
@@ -32,6 +36,8 @@ const PlanCard = memo(({ level }: PlanCardProps) => {
       <span className="text-white text-sm italic cursor-pointer group-hover:-translate-y-10 transition-all duration-300 ease-in-out">
         Basic and Premium Plans benefits, personalized diets and workouts at gym
         with our individual trainer
+        <br />
+        35$
       </span>
     );
   }

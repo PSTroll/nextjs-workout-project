@@ -11,6 +11,7 @@ import BMICalculator from "./Calculators/BMICalculator";
 import CaloriesDemand from "./Calculators/CaloriesDemand";
 import PlanCard from "./Plans/PlanCard";
 import PlanForm from "./Plans/PlanForm";
+import PlanSuccess from "./Plans/PlanSuccess";
 
 export {
   Header,
@@ -26,4 +27,5 @@ export {
   CaloriesDemand,
   PlanCard,
   PlanForm,
+  PlanSuccess,
 };

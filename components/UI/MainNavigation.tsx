@@ -43,6 +43,7 @@ const MainNavigation = () => {
                 ? "text-accent bg-gray-100"
                 : "text-black"
             } cursor-pointer hover:text-gray-500 duration-200 md:my-0 py-5 px-2 z-20`}
+            prefetch
           >
             {item.title}
           </Link>

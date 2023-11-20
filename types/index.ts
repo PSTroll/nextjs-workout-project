@@ -36,3 +36,20 @@ export interface Post {
     imagesrc: string;
   };
 }
+
+export type formType = {
+  name: string;
+  lastname: string;
+  age: string;
+  email: string;
+  activity: string;
+};
+
+export type orderType = {
+  name: string;
+  lastname: string;
+  age: string;
+  email: string;
+  activity: string;
+  level: string;
+};

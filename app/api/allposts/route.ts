@@ -24,7 +24,7 @@ export const getPostData = (postIdentifier: string) => {
   return postData;
 };
 
-const getAllPosts = () => {
+const getAllPosts = async () => {
   const postFiles = getPostsFiles();
   const allPosts = postFiles.map((post) => {
     return getPostData(post);
@@ -37,6 +37,6 @@ const getAllPosts = () => {
 };
 
 export async function GET() {
-  const allPosts = getAllPosts();
+  const allPosts = await getAllPosts();
   return NextResponse.json({ allPosts });
 }

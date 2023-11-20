@@ -1,4 +1,5 @@
-import { MongoClient } from "mongodb";
+import { formType, orderType } from "@/types";
+import { loadStripe } from "@stripe/stripe-js";
 
 const calculateBMILevel = (bmi: number) => {
   if (bmi < 16) {
@@ -75,7 +76,7 @@ export const calculateCPM = (bmr: number, activityValue: string) => {
 };
 
 export const getAllPosts = async () => {
-  const res = await fetch(`${process.env.pageUrl}/api/allposts`, {
+  const res = await fetch(`${process.env.PAGE_URL}/api/allposts`, {
     next: {
       revalidate: 1,
     },
@@ -90,7 +91,7 @@ export const getAllPosts = async () => {
 };
 
 export const getPost = async (slug: string) => {
-  const res = await fetch(`${process.env.pageUrl}/api/post/${slug}`, {
+  const res = await fetch(`${process.env.PAGE_URL}/api/post/${slug}`, {
     next: {
       revalidate: 1,
     },
@@ -142,38 +143,65 @@ export const updateFormParams = (
   return queryParams;
 };
 
-export const checkFormParams = (
-  queryParams: any,
-  setFormData: (data: any) => {}
-) => {
-  if (queryParams.has("name")) {
-    setFormData((prev: any) => ({
-      ...prev,
-      name: queryParams.get("name"),
-    }));
+export const checkout = async ({ lineItems, params, level }: any) => {
+  let stripePromise: any = null;
+  const getStripe = () => {
+    if (!stripePromise) {
+      stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY || "");
+    }
+    return stripePromise;
+  };
+
+  const stripe = await getStripe();
+  await stripe.redirectToCheckout({
+    mode: "payment",
+    lineItems,
+    successUrl: `${window.location.origin}/plans/success?level=${level}&name=${params.name}&lastname=${params.lastname}&age=${params.age}&email=${params.email}&activity=${params.activity}&session_id={CHECKOUT_SESSION_ID}`,
+    cancelUrl: window.location.origin,
+  });
+};
+
+export const orderPlan = (level: string, params: formType) => {
+  let productId = "";
+  if (level === "basic") {
+    productId = "price_1OEV5dJLjyaymvhUFtd7lI2i";
   }
-  if (queryParams.has("lastname")) {
-    setFormData((prev: any) => ({
-      ...prev,
-      lastname: queryParams.get("lastname"),
-    }));
+
+  if (level === "premium") {
+    productId = "price_1OEV6zJLjyaymvhUb0ddN6r7";
   }
-  if (queryParams.has("age")) {
-    setFormData((prev: any) => ({
-      ...prev,
-      age: queryParams.get("age"),
-    }));
+
+  if (level === "extra") {
+    productId = "price_1OEV7GJLjyaymvhUBBqvumXW";
   }
-  if (queryParams.has("email")) {
-    setFormData((prev: any) => ({
-      ...prev,
-      email: queryParams.get("email"),
-    }));
-  }
-  if (queryParams.has("activity")) {
-    setFormData((prev: any) => ({
-      ...prev,
-      activity: queryParams.get("activity"),
-    }));
-  }
+
+  checkout({
+    lineItems: [
+      {
+        price: productId,
+        quantity: 1,
+      },
+    ],
+    params,
+    level,
+  });
+};
+
+export const sendOrderToDatabase = async (formData: orderType) => {
+  const res = await fetch(`${process.env.PAGE_URL}/api/orders`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      level: formData.level,
+      name: formData.name,
+      lastname: formData.lastname,
+      mail: formData.email,
+      age: formData.age,
+      activity: formData.activity,
+    }),
+  });
+
+  await res.json();
 };
