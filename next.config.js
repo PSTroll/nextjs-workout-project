@@ -7,9 +7,6 @@ const nextConfig = {
     NEXT_PUBLIC_STRIPE_KEY:
       "pk_test_51OEUxDJLjyaymvhUCjwQdxrB0EoNl9FTt18b9JKTbXSn0ZbJzx8tzhLdd6OnMhTJOD9bshwRCG4cfB3bEw3l0EjB00iRbGCZaU",
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   reactStrictMode: false,
 };
 

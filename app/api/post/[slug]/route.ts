@@ -1,8 +1,7 @@
-import { NextResponse } from "next/server";
-import { NextApiRequest } from "next";
+import { NextResponse, NextRequest } from "next/server";
 import { getPostData } from "../../allposts/route";
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   const url = req.url;
   if (url) {
     const num = url?.lastIndexOf("/") + 1;
