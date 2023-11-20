@@ -75,35 +75,37 @@ export const calculateCPM = (bmr: number, activityValue: string) => {
   return Math.floor(bmr * value);
 };
 
-export const getAllPosts = async () => {
-  const res = await fetch(`${process.env.PAGE_URL}/api/allposts`, {
-    next: {
-      revalidate: 1,
-    },
-  });
+// export const getAllPosts = async () => {
+//   const res = await fetch(`/api/allposts`, {
+//     next: {
+//       revalidate: 1,
+//     },
+//     method: "GET",
+//   });
 
-  if (!res.ok) {
-    throw new Error("Fetching posts failed!");
-  }
+//   if (!res.ok) {
+//     throw new Error("Fetching posts failed!");
+//   }
 
-  const posts = await res.json();
-  return posts;
-};
+//   const posts = await res.json();
+//   return posts;
+// };
 
-export const getPost = async (slug: string) => {
-  const res = await fetch(`${process.env.PAGE_URL}/api/post/${slug}`, {
-    next: {
-      revalidate: 1,
-    },
-  });
+// export const getPost = async (slug: string) => {
+//   const res = await fetch(`${process.env.PAGE_URL}/api/post/${slug}`, {
+//     next: {
+//       revalidate: 1,
+//     },
+//     method: "GET",
+//   });
 
-  if (!res.ok) {
-    throw new Error("Fetching posts failed!");
-  }
+//   if (!res.ok) {
+//     throw new Error("Fetching posts failed!");
+//   }
 
-  const { postData } = await res.json();
-  return postData;
-};
+//   const { postData } = await res.json();
+//   return postData;
+// };
 
 export const updateFormParams = (
   queryParams: any,
@@ -187,8 +189,8 @@ export const orderPlan = (level: string, params: formType) => {
   });
 };
 
-export const sendOrderToDatabase = async (formData: orderType) => {
-  const res = await fetch(`${process.env.PAGE_URL}/api/orders`, {
+export const sendOrderToDatabase = async (formData: orderType, url: string) => {
+  const res = await fetch(`http://${url}/api/orders`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

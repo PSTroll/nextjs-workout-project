@@ -1,11 +1,11 @@
-import React, { memo } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { getAllPosts } from "../../utils";
+import { getAllPosts } from "../../serverutils";
 import { Post } from "@/types";
 
-const Page = memo(async () => {
+const Page = async () => {
   const { allPosts } = await getAllPosts();
   return (
     <main className="w-full overflow-x-hidden flex justify-center items-center bg-dirty-white">
@@ -35,6 +35,6 @@ const Page = memo(async () => {
       </div>
     </main>
   );
-});
+};
 
 export default Page;

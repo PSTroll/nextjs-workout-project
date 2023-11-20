@@ -46,10 +46,10 @@ export type formType = {
 };
 
 export type orderType = {
-  name: string;
-  lastname: string;
-  age: string;
-  email: string;
-  activity: string;
-  level: string;
+  name: string | null;
+  lastname: string | null;
+  age: string | null;
+  email: string | null;
+  activity: string | null;
+  level: string | null;
 };

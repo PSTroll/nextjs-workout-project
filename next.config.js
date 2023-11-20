@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    PAGE_URL: "http://localhost:3000",
     DB_KEY:
       "mongodb+srv://pstrollyt:vDsLnVyhxS1s0aUU@orders.2pnybem.mongodb.net/orders?retryWrites=true&w=majority",
     NEXT_PUBLIC_STRIPE_KEY:

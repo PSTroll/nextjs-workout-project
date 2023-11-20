@@ -9,4 +9,5 @@ export async function GET(req: NextRequest) {
     const postData = getPostData(slug + ".md");
     return NextResponse.json({ postData });
   }
+  return NextResponse.json({ message: "Something gone wrong" });
 }

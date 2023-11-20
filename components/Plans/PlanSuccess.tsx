@@ -8,26 +8,16 @@ import { sendOrderToDatabase } from "@/utils";
 const PlanSuccess = () => {
   const params = useSearchParams();
   const [data, setData] = useState({
-    name: "",
-    lastname: "",
-    age: "",
-    email: "",
-    activity: "",
-    level: "",
+    name: params.get("name"),
+    lastname: params.get("lastname"),
+    age: params.get("age"),
+    email: params.get("email"),
+    activity: params.get("activity"),
+    level: params.get("level"),
   });
 
   useEffect(() => {
-    if (params.has("name")) {
-      setData({
-        name: params.get("name") || "",
-        lastname: params.get("lastname") || "",
-        age: params.get("age") || "",
-        email: params.get("email") || "",
-        activity: params.get("activity") || "",
-        level: params.get("level") || "",
-      });
-    }
-    sendOrderToDatabase(data);
+    sendOrderToDatabase(data, window.location.host);
   }, []);
 
   return (

@@ -3,7 +3,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Image from "next/image";
 
-import { getPost } from "@/utils";
+import { getPost } from "@/serverutils";
 import rehypeRaw from "rehype-raw";
 
 const Page = async ({ params }: { params: { slug: string } }) => {
