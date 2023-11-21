@@ -31,7 +31,7 @@ const MainNavigation = () => {
         />
       </span>
       <nav
-        className={`md:flex md:z-30 md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 md:ml-6 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-300 bg-white max-md:flex max-md:flex-col ${styles}`}
+        className={`md:flex md:z-30 md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 md:ml-6 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-300 bg-white max-md:flex max-md:flex-col ${styles} z-10`}
       >
         {paths.map((item) => (
           <Link
