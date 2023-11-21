@@ -3,13 +3,13 @@ import fs from "fs";
 import matter from "gray-matter";
 import { NextResponse } from "next/server";
 
-export const postsDirectory = path.join(process.cwd(), "posts");
+const postsDirectory = path.join(process.cwd(), "posts");
 
-export const getPostsFiles = () => {
+const getPostsFiles = () => {
   return fs.readdirSync(postsDirectory);
 };
 
-export const getPostData = (postIdentifier: string) => {
+const getPostData = (postIdentifier: string) => {
   const postSlug = postIdentifier.replace(/\.md$/, "");
   const filePath = path.join(postsDirectory, `${postSlug}.md`);
   const fileContent = fs.readFileSync(filePath, "utf-8");

@@ -1,5 +1,24 @@
 import { NextResponse, NextRequest } from "next/server";
-import { getPostData } from "../../allposts/route";
+import path from "path";
+import fs from "fs";
+import matter from "gray-matter";
+
+const postsDirectory = path.join(process.cwd(), "posts");
+
+const getPostData = (postIdentifier: string) => {
+  const postSlug = postIdentifier.replace(/\.md$/, "");
+  const filePath = path.join(postsDirectory, `${postSlug}.md`);
+  const fileContent = fs.readFileSync(filePath, "utf-8");
+  const { data, content } = matter(fileContent);
+
+  const postData = {
+    slug: postSlug,
+    data,
+    content,
+  };
+
+  return postData;
+};
 
 export async function GET(req: NextRequest) {
   const url = req.url;
