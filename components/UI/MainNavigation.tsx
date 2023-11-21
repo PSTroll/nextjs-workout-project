@@ -44,6 +44,7 @@ const MainNavigation = () => {
                 : "text-black"
             } cursor-pointer hover:text-gray-500 duration-200 md:my-0 py-5 px-2 z-20`}
             prefetch
+            onClick={expandMenu}
           >
             {item.title}
           </Link>
