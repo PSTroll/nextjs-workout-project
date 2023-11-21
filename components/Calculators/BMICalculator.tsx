@@ -41,7 +41,7 @@ const BMICalculator = () => {
   };
 
   return (
-    <div className="lg:py-10 p-5 bg-white rounded-lg bg-opacity-30 backdrop-blur xl:min-w-[1144px] my-10 m-5">
+    <div className="lg:py-10 p-5 bg-white rounded-lg bg-opacity-30 backdrop-blur xl:min-w-[1144px] my-10 m-5 z-0">
       <h2 className="text-center font-bold text-xl">
         BMI Calculator For Adults
       </h2>
