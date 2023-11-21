@@ -1,24 +1,22 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { sendOrderToDatabase } from "@/utils";
+import { sendOrderToDatabase } from "@/serverutils";
 
-const PlanSuccess = () => {
-  const params = useSearchParams();
-  const [data, setData] = useState({
-    name: params.get("name"),
-    lastname: params.get("lastname"),
-    age: params.get("age"),
-    email: params.get("email"),
-    activity: params.get("activity"),
-    level: params.get("level"),
-  });
+const PlanSuccess = ({
+  urlParams,
+}: {
+  [key: string]: string | string[] | undefined | any;
+}) => {
+  const data = {
+    name: urlParams?.name,
+    lastname: urlParams?.lastname,
+    age: urlParams?.age,
+    email: urlParams?.email,
+    activity: urlParams?.activity,
+    level: urlParams?.level,
+  };
 
-  useEffect(() => {
-    sendOrderToDatabase(data);
-  }, []);
+  sendOrderToDatabase(data);
 
   return (
     <div>
