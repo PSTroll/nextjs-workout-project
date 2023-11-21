@@ -189,8 +189,8 @@ export const orderPlan = (level: string, params: formType) => {
   });
 };
 
-export const sendOrderToDatabase = async (formData: orderType, url: string) => {
-  const res = await fetch(`http://${url}/api/orders`, {
+export const sendOrderToDatabase = async (formData: orderType) => {
+  const res = await fetch(process.env.PAGE_URL + "/api/orders", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -17,7 +17,7 @@ const PlanSuccess = () => {
   });
 
   useEffect(() => {
-    sendOrderToDatabase(data, window.location.host);
+    sendOrderToDatabase(data);
   }, []);
 
   return (
