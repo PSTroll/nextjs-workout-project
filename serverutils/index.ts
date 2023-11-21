@@ -1,9 +1,5 @@
-import { headers } from "next/headers";
-
 export const getAllPosts = async () => {
-  const headersList = headers();
-  headersList.get("");
-  const res = await fetch(`/api/allposts`, {
+  const res = await fetch(process.env.PAGE_URL + "/api/allposts", {
     next: {
       revalidate: 1,
     },
@@ -11,7 +7,7 @@ export const getAllPosts = async () => {
   });
 
   if (!res.ok) {
-    throw new Error("Fetching posts failed!");
+    throw new Error("Fetching failed!");
   }
 
   const posts = await res.json();
@@ -19,8 +15,7 @@ export const getAllPosts = async () => {
 };
 
 export const getPost = async (slug: string) => {
-  const headersList = await headers();
-  const res = await fetch(`/api/post/${slug}`, {
+  const res = await fetch(`${process.env.PAGE_URL}/api/post/${slug}`, {
     next: {
       revalidate: 1,
     },
