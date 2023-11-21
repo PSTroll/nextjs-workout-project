@@ -17,7 +17,7 @@ export const getAllPosts = async () => {
 };
 
 export const getPost = async (slug: string) => {
-  const res = await fetch(`${process.env.PAGE_URL}/api/post/${slug}`, {
+  const res = await fetch(process.env.PAGE_URL + `/api/post/${slug}`, {
     next: {
       revalidate: 1,
     },
