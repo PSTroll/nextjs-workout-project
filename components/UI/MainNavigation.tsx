@@ -19,6 +19,10 @@ const MainNavigation = () => {
       : (setIsClosed("menu"), setStyles(``));
   };
 
+  const expandMenuOnLink = () => {
+    setIsClosed("close");
+  };
+
   return (
     <header className="text-black font-bold text-xl flex shadow-md">
       <span className="text-3xl cursor-pointer md:hidden block mx-2 flex items-center p-6">
@@ -44,7 +48,7 @@ const MainNavigation = () => {
                 : "text-black"
             } cursor-pointer hover:text-gray-500 duration-200 md:my-0 py-5 px-2 z-20`}
             prefetch
-            onClick={expandMenu}
+            onClick={expandMenuOnLink}
           >
             {item.title}
           </Link>
