@@ -20,7 +20,7 @@ const MainNavigation = () => {
   };
 
   const expandMenuOnLink = () => {
-    setIsClosed("close");
+    setIsClosed("menu");
     setStyles(``);
   };
 
