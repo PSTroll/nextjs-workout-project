@@ -3,7 +3,7 @@ import { orderType } from "@/types";
 export const getAllPosts = async () => {
   const res = await fetch(process.env.PAGE_URL + "/api/allposts", {
     next: {
-      revalidate: 1,
+      revalidate: 3600,
     },
     method: "GET",
   });
@@ -19,7 +19,7 @@ export const getAllPosts = async () => {
 export const getPost = async (slug: string) => {
   const res = await fetch(process.env.PAGE_URL + `/api/post/${slug}`, {
     next: {
-      revalidate: 1,
+      revalidate: 3600,
     },
     method: "GET",
   });
