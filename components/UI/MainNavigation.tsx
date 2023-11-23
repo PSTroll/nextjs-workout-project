@@ -21,6 +21,7 @@ const MainNavigation = () => {
 
   const expandMenuOnLink = () => {
     setIsClosed("close");
+    setStyles(`top-[70px] opacity-100 flex flex-col`);
   };
 
   return (
